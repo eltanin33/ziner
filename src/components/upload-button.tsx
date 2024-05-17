@@ -7,10 +7,13 @@ import DropZone from "react-dropzone";
 import { Cloud, File } from "lucide-react";
 import { Progress } from "./ui/progress";
 import { resolve } from "path";
+import { useUploadThing } from "@/lib/uploadthing";
 
 const UploadDropzone = () => {
   const [isUploadiing, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+
+  const { startUpload } = useUploadThing("pdfUploader");
 
   const startSimulatedProgress = () => {
     setUploadProgress(0);
@@ -33,6 +36,11 @@ const UploadDropzone = () => {
       onDrop={async (acceptedFile) => {
         setIsUploading(true);
         const progressInterval = startSimulatedProgress();
+        const res = await startUpload(acceptedFile);
+
+        if (!res) {
+            
+        }
 
         clearInterval(progressInterval);
         setUploadProgress(100);
