@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import NavBar from "@/components/nav-bar";
 import ReactQueryProvider from "@/components/providers";
 
+import "react-loading-skeleton/dist/skeleton.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
