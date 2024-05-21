@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
     "@kinde-oss/kinde-auth-nextjs": "^2.2.8",
     "@prisma/client": "5.14.0",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -30,6 +31,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-dropzone": "^14.2.3",
+    "react-hook-form": "^7.51.5",
     "react-loading-skeleton": "^3.4.0",
     "react-pdf": "^8.0.2",
     "react-resize-detector": "^10.0.1",
