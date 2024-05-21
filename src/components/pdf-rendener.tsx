@@ -1,6 +1,12 @@
 "use client";
 
-import { ChevronDown, ChevronUp, Loader2, Search } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronUp,
+  Loader2,
+  RotateCcw,
+  Search,
+} from "lucide-react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
@@ -22,6 +28,7 @@ import {
 } from "./ui/dropdown-menu";
 
 import SimpleBar from "simplebar-react";
+import PdfFullScreen from "./pdf-full-screen";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -33,6 +40,7 @@ const PdfRenderer = ({ url }: PdfRenderProps) => {
   const [numPages, setNumPages] = useState(1);
   const [curPage, setCurPage] = useState(1);
   const [scale, setScale] = useState(1);
+  const [rotation, setRotation] = useState(0);
   const { toast } = useToast();
   const { width, ref } = useResizeDetector();
 
@@ -71,6 +79,7 @@ const PdfRenderer = ({ url }: PdfRenderProps) => {
             variant="ghost"
             onClick={() => {
               setCurPage((prev) => (prev - 1 > 1 ? prev - 1 : 1));
+              setValue("page", String(curPage - 1));
             }}
           >
             <ChevronDown className="h-4 w-4" />
@@ -103,6 +112,7 @@ const PdfRenderer = ({ url }: PdfRenderProps) => {
               setCurPage((prev) =>
                 prev + 1 <= numPages ? prev + 1 : numPages
               );
+              setValue("page", String(curPage + 1));
             }}
           >
             <ChevronUp className="h-4 w-4" />
@@ -132,6 +142,16 @@ const PdfRenderer = ({ url }: PdfRenderProps) => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          <Button
+            onClick={() => {
+              setRotation((prev) => prev + 90);
+            }}
+            aria-label="rotation 90 deg"
+          >
+            <RotateCcw className="w-4 h-4" />
+          </Button>
+
+          <PdfFullScreen url={url} />
         </div>
       </div>
 
@@ -161,6 +181,7 @@ const PdfRenderer = ({ url }: PdfRenderProps) => {
                 width={width ? width : 1}
                 pageNumber={curPage}
                 scale={scale}
+                rotate={rotation}
               />
             </Document>
           </div>
