@@ -18,7 +18,7 @@ const Message = ({ message, isNextMessageSamePerson }: MessageProps) => {
     >
       <div
         className={cn(
-          "relative flex h6 w-6 aspect-auto items-center justify-center",
+          "relative flex h-6 w-6 aspect-square items-center justify-center",
           {
             "order-2 bg-blue-600 rounded-sm": message.isUserMessage,
             "order-1 bg-zinc-800 rounded-sm": !message.isUserMessage,
@@ -50,7 +50,7 @@ const Message = ({ message, isNextMessageSamePerson }: MessageProps) => {
         >
           {typeof message.text === "string" ? (
             <ReactMarkdown
-              className={cn("prose", {
+              className={cn("prose break-words", {
                 "text-zinc-50": message.isUserMessage,
               })}
             >

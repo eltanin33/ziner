@@ -29,7 +29,7 @@ const Messages = ({ fileId }: MessagesProps) => {
     isUserMessage: false,
     text: (
       <span className="flex h-full items-center justify-center">
-        <Loader2 className="h-4 w4 animate-spin" />
+        <Loader2 className="h-4 w-4 animate-spin" />
       </span>
     ),
   };
@@ -40,7 +40,7 @@ const Messages = ({ fileId }: MessagesProps) => {
   ];
 
   return (
-    <div className="flex max-f-[calc(100vh-3.5rem-7rem)] border-zinc-200 flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+    <div className="flex max-h-[calc(100vh-3.5rem-7rem)] border-zinc-200 flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
       {combinedMessages && combinedMessages.length > 0 ? (
         combinedMessages.map((message, i) => {
           const isNextMessageSamePerson =
@@ -55,11 +55,13 @@ const Messages = ({ fileId }: MessagesProps) => {
               />
             );
           } else {
-            <Message
-              message={message}
-              key={message.id}
-              isNextMessageSamePerson={isNextMessageSamePerson}
-            />;
+            return (
+              <Message
+                message={message}
+                key={message.id}
+                isNextMessageSamePerson={isNextMessageSamePerson}
+              />
+            );
           }
         })
       ) : isLoading ? (
