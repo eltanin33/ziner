@@ -21,7 +21,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const ChatContextProvidet = ({ fileId, children }: Props) => {
+export const ChatContextProvider = ({ fileId, children }: Props) => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
