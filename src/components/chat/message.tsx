@@ -10,6 +10,13 @@ interface MessageProps {
 }
 
 const Message = ({ message, isNextMessageSamePerson }: MessageProps) => {
+  const renderers = {
+    // 这个方法将会覆盖默认的code块渲染
+    code: ({ value }: { value: string }) => {
+      return <pre className="whitespace-pre-wrap">{value}</pre>;
+    },
+  };
+
   return (
     <div
       className={cn("flex items-end", {
