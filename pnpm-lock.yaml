@@ -23,6 +23,9 @@ importers:
       '@langchain/pinecone':
         specifier: ^0.0.6
         version: 0.0.6(openai@4.47.1(encoding@0.1.13))
+      '@mantine/hooks':
+        specifier: ^7.10.0
+        version: 7.10.0(react@18.3.1)
       '@pinecone-database/pinecone':
         specifier: ^2.2.1
         version: 2.2.1
@@ -1221,6 +1224,11 @@ packages:
   '@langchain/textsplitters@0.0.2':
     resolution: {integrity: sha512-6bQOuYHTGYlkgPY/8M5WPq4nnXZpEysGzRopQCYjg2WLcEoIPUMMrXsAaNNdvU3BOeMrhin8izvpDPD165hX6Q==}
     engines: {node: '>=18'}
+
+  '@mantine/hooks@7.10.0':
+    resolution: {integrity: sha512-fnalwYS2WQEFS4wmhmAetDZ/VdJPLNeUXPX9t+S21o3p/dRTX1xhU2mS7yWaQUKM0hPD1TcujqXGlP2M2g/A9A==}
+    peerDependencies:
+      react: ^18.2.0
 
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
@@ -5305,6 +5313,10 @@ snapshots:
       js-tiktoken: 1.0.12
     transitivePeerDependencies:
       - openai
+
+  '@mantine/hooks@7.10.0(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
 
   '@mapbox/node-pre-gyp@1.0.11(encoding@0.1.13)':
     dependencies:
